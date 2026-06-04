@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>anniv</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 6em;
+            margin-bottom: 10px;
+            color: #222;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        #ny-time {
+            font-size: 6em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>INDICE</h1>
+    <div id="ny-time">Heure à New York : Chargement...</div>
+
+    <script>
+        // Fonction pour afficher l'heure de New York
+        function updateNYTime() {
+            const nyTime = new Date().toLocaleTimeString('fr-FR', {
+                timeZone: 'America/New_York',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            document.getElementById("ny-time").textContent = `${nyTime}`;
+        }
+
+        // Mise à jour toutes les secondes
+        setInterval(updateNYTime, 1000);
+        updateNYTime(); // Lancement immédiat
+    </script>
+</body>
+</html>
