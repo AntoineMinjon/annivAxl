@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>anniv</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 6em;
+            margin-bottom: 10px;
+            color: #222;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        #countdown {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>INDICE</h1>
+    <div id="countdown">Chargement...</div>
+
+    <script>
+        // Date cible : 11 juin 2026 à 21h00 (heure locale)
+        const targetDate = new Date("2026-06-11T21:00:00");
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById("countdown").innerHTML = "C'est l'heure !";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days}j ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        // Mise à jour toutes les secondes
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Lancement immédiat
+    </script>
+</body>
+</html>
